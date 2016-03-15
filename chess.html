@@ -2,7 +2,67 @@
 	<head>
 	</head>
 	<style>
+		.table {
+			border-width: 1px;
+			border-color: black;
+			border-style: solid;
+			border-collapse: collapse;
+			display: table;
+		}
+		.tile {
+			width: 50px;
+			height: 50px;
+			display: table-cell;
+			border-style: solid;
+			border-width: 1px;
+		}
+		.tileGrey {
+			background-color: rgb(184, 184, 184);
+		}
+		.tileTeal {
+			background-color: rgb( 27, 61, 69);
+		}
+		.row {
+			display: table-row;
+		}
 	</style>
+		<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var tableDiv = $("<div>", {
+					class:"table"
+				});
+				tableDiv.appendTo("body");
+				
+				for(var row = 0; row < 8; row++) {
+					var tableRow = $("<div>", {
+						class:"row"
+					});
+					tableRow.appendTo(tableDiv);
+					
+					for(var col = 0; col < 8; col++) {
+						var tileType = "tileGrey";
+						if(row % 2 == 0) {
+							if(col % 2 == 0)
+								tileType = "tileTeal";
+							else
+								tileType = "tileGrey";
+						}
+						else {
+							if(col % 2 == 0)
+								tileType = "tileGrey";
+							else
+								tileType = "tileTeal"
+						}
+						
+						var tableCell = $("<div>",{
+							class:"tile " + tileType
+						});
+						tableCell.appendTo(tableRow);
+					}
+				}
+			});
+		</script>
 	<body>
 
 	</body>
